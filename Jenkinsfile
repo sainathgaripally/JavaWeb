@@ -4,6 +4,11 @@ pipeline {
         sonarrtoken = 'sonartoken'
     }
     stages {
+        stage('build package') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
         stage('Scan code') {
             steps {
                 withSonarQubeEnv('sonarqube-6.7.7') {
@@ -11,9 +16,14 @@ pipeline {
                 }
             }
         }
-        stage('build package') {
+        stage('Quality gates') {
             steps {
-                sh 'mvn clean package'
+                timeout(time: 1, unit: 'HOURS') {
+                    def st = waitForQualityGate()
+                    if (st.status != 'OK') {
+                        error "pipeline aborted : ${st.status}"
+                    }
+                }
             }
         }
     }
