@@ -17,13 +17,11 @@ pipeline {
             }
         }
         stage('Quality gates') {
-            steps {
                 timeout(time: 1, unit: 'HOURS') {
                     def st = waitForQualityGate()
                     if (st.status != 'OK') {
                         error "pipeline aborted : ${st.status}"
                     }
-                }
             }
         }
     }
