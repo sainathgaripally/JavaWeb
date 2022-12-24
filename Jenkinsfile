@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        sonar-token = 'sonartoken'
+        sonarrtoken = 'sonartoken'
     }
     stages {
         stage('build package') {
