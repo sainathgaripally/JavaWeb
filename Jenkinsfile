@@ -23,5 +23,10 @@ pipeline {
                 }
             }
         }
+        stage ('testing') {
+            steps {
+                echo 'completed'
+            }
+        }
     }
 }
