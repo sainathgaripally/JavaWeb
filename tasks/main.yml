@@ -1,0 +1,5 @@
+---
+- name: Print message
+  debug:
+    msg: "This is a sample message"
+...
