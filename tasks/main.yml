@@ -2,4 +2,8 @@
 - name: Print message
   debug:
     msg: "This is a sample message"
+
+- name: Print message
+  debug:
+    msg: "This is a variable {{ env }}"
 ...
