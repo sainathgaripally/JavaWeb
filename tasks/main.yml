@@ -1,9 +1,5 @@
 ---
 - name: Print message
   debug:
-    msg: "This is a sample {{ env }}"
-
-- name: Print message
-  debug:
     msg: "This is a variable {{ env }}"
 ...
