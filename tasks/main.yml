@@ -3,6 +3,8 @@
   debug:
     msg: "This is a sample message"
     msg: "This is a sample {{ env }}"
+  vars_files:
+    - security.json
 
 - name: Print message
   debug:
